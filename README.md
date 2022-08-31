@@ -1,2 +1,0 @@
-# desafio-tecnico
-desafío técnico
