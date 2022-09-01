@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import UserPool from "../UserPool.js";
 
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 
+import { gapi } from "gapi-script";
+
 const Registro = () => {
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId:
+          "915354670638-ffae1a93lasgjdji297r8cohqda8aou4.apps.googleusercontent.com",
+        scope: "email",
+      });
+    }
+    gapi.load("client:auth2", start);
+  }, []);
+
   const [usuario, setUsuario] = useState("");
   const [telefono, setTelefono] = useState("");
   const [contra, setContra] = useState("");
@@ -24,10 +37,19 @@ const Registro = () => {
     console.log(response);
   };
 
-  const responseGoogle = (response) => {
-    console.log(response);
-    console.log(response.profileObj);
-  }
+
+
+  const onSuccess = (response) => {
+    console.log("SUCCESS", response);
+  };
+  const onFailure = (response) => {
+    console.log("FAILED", response);
+  };
+  const onLogoutSuccess = () => {
+    console.log("SUCESS LOG OUT");
+  };
+
+
 
   return (
     <div>
@@ -74,13 +96,10 @@ const Registro = () => {
         fields="name,email"
         callback={responseFacebook}
       />
-
       <GoogleLogin
-        clientId="915354670638-ffae1a93lasgjdji297r8cohqda8aou4.apps.googleusercontent.com"
-        buttonText="Login"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={"single_host_origin"}
+        clientId={"915354670638-ffae1a93lasgjdji297r8cohqda8aou4.apps.googleusercontent.com"}
+        onSuccess={onSuccess}
+        onFailure={onFailure}
       />
       ,
     </div>

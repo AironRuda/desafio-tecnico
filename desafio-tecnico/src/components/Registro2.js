@@ -1,11 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Etapas from "./Etapas";
 import UserPool from "../UserPool";
 
 import FacebookLogin from "react-facebook-login";
+import GoogleLogin from "react-google-login";
+
+import { gapi } from "gapi-script";
 
 function Registro2() {
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId:
+          "915354670638-ffae1a93lasgjdji297r8cohqda8aou4.apps.googleusercontent.com",
+        scope: "email",
+      });
+    }
+    gapi.load("client:auth2", start);
+  }, []);
+
   const navegate = useNavigate();
 
   const [usuario, setUsuario] = useState("");
@@ -20,9 +34,10 @@ function Registro2() {
         if (err) {
           console.log(err);
           alert("Se presentó un error en el registro");
+        } else {
+          console.log(data);
+          navegate("/Registro4");
         }
-        console.log(data);
-        navegate("/Registro4");
       });
     } else {
       alert("Las contraseñas no coinciden ");
@@ -31,7 +46,37 @@ function Registro2() {
 
   const responseFacebook = (response) => {
     console.log(response);
-    navegate("/home");
+    console.log(response.name.replace(/ /g, "").toLowerCase());
+    let user = response.name.replace(/ /g, "").toLowerCase();
+
+    UserPool.signUp(user, response.email, [], null, (err, data) => {
+      if (err) {
+        console.log(err);
+        alert("Se presentó un error en el registro");
+      } else {
+        console.log(data);
+        navegate("/home");
+      }
+    });
+  };
+
+  const onSuccess = (response) => {
+    console.log("SUCCESS", response.profileObj.name.replace(/ /g, "").toLowerCase());
+    let user = response.profileObj.name.replace(/ /g, "").toLowerCase()
+    console.log(response.profileObj.email)
+
+    UserPool.signUp(user, response.profileObj.email, [], null, (err, data) => {
+      if (err) {
+        console.log(err);
+        alert("Se presentó un error en el registro");
+      } else {
+        console.log(data);
+        navegate("/home");
+      }
+    });
+  };
+  const onFailure = (response) => {
+    console.log("FAILED", response);
   };
 
   return (
@@ -72,6 +117,7 @@ function Registro2() {
           onChange={(e) => setContra2(e.target.value)}
         />
         <p>-------- o ingrese con --------</p>
+
         <div>
           <FacebookLogin
             className="facebook-login"
@@ -79,6 +125,16 @@ function Registro2() {
             autoLoad={false}
             fields="name,email"
             callback={responseFacebook}
+          />
+        </div>
+
+        <div>
+          <GoogleLogin
+            clientId={
+              "915354670638-ffae1a93lasgjdji297r8cohqda8aou4.apps.googleusercontent.com"
+            }
+            onSuccess={onSuccess}
+            onFailure={onFailure}
           />
         </div>
 

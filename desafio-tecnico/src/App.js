@@ -5,7 +5,7 @@ import Router from "./Router"; // Importo el componente Router, en donde se desp
 function App() {
   return (
     <div className="App">{/*Se le asignan estilos*/}
-      <Registro /> {/* Se hace llamado al componente */}
+      <Router /> {/* Se hace llamado al componente */}
     </div>
   );
 }
