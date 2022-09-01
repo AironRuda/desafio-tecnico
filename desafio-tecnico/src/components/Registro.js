@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import UserPool from "../UserPool.js";
 
+import FacebookLogin from "react-facebook-login";
+
 const Registro = () => {
   const [usuario, setUsuario] = useState("");
   const [telefono, setTelefono] = useState("");
@@ -9,12 +11,16 @@ const Registro = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    UserPool.signUp(usuario, contra, [], null, (err,data) => {
-        if(err) {
-            console.log(err)
-        }
-        console.log(data)
-    })
+    UserPool.signUp(usuario, contra, [], null, (err, data) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(data);
+    });
+  };
+
+  const responseFacebook = (response) => {
+    console.log(response);
   };
 
   return (
@@ -56,6 +62,13 @@ const Registro = () => {
           Crear
         </button>
       </form>
+
+      <FacebookLogin
+        appId="788274975660599"
+        autoLoad={false}
+        fields="name,email"
+        callback={responseFacebook}
+      />
     </div>
   );
 };

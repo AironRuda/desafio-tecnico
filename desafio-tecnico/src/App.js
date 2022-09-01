@@ -1,4 +1,5 @@
 import "./assets/css/App.css"; // Importo los estilos de la aplicacion
+import Registro from "./components/Registro";
 import Router from "./Router"; // Importo el componente Router, en donde se desplegará la informacion
 
 function App() {

@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import Etapas from "./Etapas";
 import UserPool from "../UserPool";
 
-//import UserPool from "../UserPool";
+import FacebookLogin from "react-facebook-login";
 
 function Registro2() {
-
-  const navegate = useNavigate()
+  const navegate = useNavigate();
 
   const [usuario, setUsuario] = useState("");
   const [telefono, setTelefono] = useState("");
@@ -16,18 +15,23 @@ function Registro2() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if(contra === contra2){
-      UserPool.signUp(usuario, contra, [], null, (err,data) => {
-        if(err) {
-            console.log(err)
-            alert("Se presentó un error en el registro")
+    if (contra === contra2) {
+      UserPool.signUp(usuario, contra, [], null, (err, data) => {
+        if (err) {
+          console.log(err);
+          alert("Se presentó un error en el registro");
         }
-        console.log(data)
-        navegate("/Registro4")
-    })
+        console.log(data);
+        navegate("/Registro4");
+      });
     } else {
-      alert("Las contraseñas no coinciden ")
+      alert("Las contraseñas no coinciden ");
     }
+  };
+
+  const responseFacebook = (response) => {
+    console.log(response);
+    navegate("/home");
   };
 
   return (
@@ -69,7 +73,13 @@ function Registro2() {
         />
         <p>-------- o ingrese con --------</p>
         <div>
-          <h1>confirmacion con paginas extras</h1>
+          <FacebookLogin
+            className="facebook-login"
+            appId="788274975660599"
+            autoLoad={false}
+            fields="name,email"
+            callback={responseFacebook}
+          />
         </div>
 
         <div className="condiciones-comunicaicones">
