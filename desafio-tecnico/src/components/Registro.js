@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import UserPool from "../UserPool.js";
 
 import FacebookLogin from "react-facebook-login";
+import GoogleLogin from "react-google-login";
 
 const Registro = () => {
   const [usuario, setUsuario] = useState("");
@@ -22,6 +23,11 @@ const Registro = () => {
   const responseFacebook = (response) => {
     console.log(response);
   };
+
+  const responseGoogle = (response) => {
+    console.log(response);
+    console.log(response.profileObj);
+  }
 
   return (
     <div>
@@ -62,13 +68,21 @@ const Registro = () => {
           Crear
         </button>
       </form>
-
       <FacebookLogin
         appId="788274975660599"
         autoLoad={false}
         fields="name,email"
         callback={responseFacebook}
       />
+
+      <GoogleLogin
+        clientId="915354670638-ffae1a93lasgjdji297r8cohqda8aou4.apps.googleusercontent.com"
+        buttonText="Login"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+        cookiePolicy={"single_host_origin"}
+      />
+      ,
     </div>
   );
 };
