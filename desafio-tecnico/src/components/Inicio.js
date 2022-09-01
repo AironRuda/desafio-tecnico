@@ -16,7 +16,7 @@ function Inicio() {
         <button
           className="btn"
           onClick={() => {
-            navegate("/iniciar_sesion");
+            navegate("/iniciar_sesion"); // Navegacion mediante hooks a la url establecida
           }}
         >
           <strong>iniciar sesion</strong>
@@ -25,7 +25,7 @@ function Inicio() {
         <button
           className="btn btn-blanco"
           onClick={() => {
-            navegate("/registro1");
+            navegate("/registro1"); // Navegacion mediante hooks a la url establecida
           }}
         >
           <strong>Registro</strong>

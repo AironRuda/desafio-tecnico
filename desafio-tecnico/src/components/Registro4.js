@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Etapas from "./Etapas";
 
 function Registro4() {
 
@@ -7,22 +8,7 @@ function Registro4() {
 
   return (
     <div className="informacion">
-      <div className="etapas">
-        <ul>
-          <li className="etapa-actual">
-            <strong>1</strong>
-          </li>
-          <li className="etapa-actual">
-            <strong>2</strong>
-          </li>
-          <li className="etapa-actual">
-            <strong>3</strong>
-          </li>
-          <li className="etapa-actual">
-            <strong>4</strong>
-          </li>
-        </ul>
-      </div>
+      <Etapas etapaActual={4}/>
 
       <img
         className="imagen-usuario"
@@ -45,7 +31,7 @@ function Registro4() {
       <button
         className="btn btn-morado"
         onClick={() => {
-          navegate("/registro4");
+          navegate("/home");
         }}
       >
         completar perfil

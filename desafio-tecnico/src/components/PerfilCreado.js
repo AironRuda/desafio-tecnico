@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function PerfilCreado() {
+function PerfilCreado() { // Componente al que se accede una vez el usuario se identificó adecuadamente
   const navegate = useNavigate();
 
   return (
@@ -17,7 +17,7 @@ function PerfilCreado() {
       <button
         className="btn btn-morado"
         onClick={() => {
-          navegate("/home");
+          navegate("/home"); // Navegacion mediante hooks a la url establecida
         }}
       >
         Finalizar
