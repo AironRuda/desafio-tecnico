@@ -14,7 +14,7 @@ El campo para ingresar el teléfono no funciona, únicamente funciona el botón 
  se muestran espacios para un código de verificación de 4 dígitos que no está habilitado, el botón de confirmar navega hasta el home.
 
 ## Etapas de inicio de sesión: 
-	Se requiere un usuario y una contraseña. Debido a que los códigos de autenticación no funcionan el tratar de ingresar un nuevo usuario no permite el ingreso. Los usuarios que pueden ser utilizados fueron autenticados manualmente y se pueden implementar para observar el correcto desempeño de la aplicación.
+ Se requiere un usuario y una contraseña. Debido a que los códigos de autenticación no funcionan el tratar de ingresar un nuevo usuario no permite el ingreso. Los usuarios que pueden ser utilizados fueron autenticados manualmente y se pueden implementar para observar el correcto desempeño de la aplicación.
 ### Usuario 1: 
 			usuario: aironn.rudaa@gmail.com
 			contraseña: aironn.rudaa@gmail.com
