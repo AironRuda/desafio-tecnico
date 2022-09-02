@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-desafiotecnicoautent-staging-223626-authRole",
+      "UnauthRoleArn": "arn:aws:iam::075666523345:role/amplify-desafiotecnicoautent-staging-223626-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::075666523345:role/amplify-desafiotecnicoautent-staging-223626-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-desafiotecnicoautent-staging-223626-deployment",
+      "UnauthRoleName": "amplify-desafiotecnicoautent-staging-223626-unauthRole",
+      "StackName": "amplify-desafiotecnicoautent-staging-223626",
+      "StackId": "arn:aws:cloudformation:us-east-1:075666523345:stack/amplify-desafiotecnicoautent-staging-223626/84226f80-2a46-11ed-a629-0a8764e64701",
+      "AmplifyAppId": "d2c4cl6s8xhk5c"
+    },
+    "categories": {
+      "auth": {
+        "desafiotecnicoautenticacion": {}
+      }
+    }
+  }
+}

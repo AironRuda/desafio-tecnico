@@ -21,7 +21,7 @@ function Etapas(props) { // Funcion que pinta los recuadros de las etapas del re
         </ul>
       )}
 
-      {props.etapaActual === 2 && (
+      {props.etapaActual === 2 && ( //En etapa 2 se puntan 2 recuadros
         <ul>
           <li className="etapa-actual">
             <strong>1</strong>
@@ -38,7 +38,7 @@ function Etapas(props) { // Funcion que pinta los recuadros de las etapas del re
         </ul>
       )}
 
-      {props.etapaActual === 3 && (
+      {props.etapaActual === 3 && ( // En etapa 3 se puntan 3 recuadros
         <ul>
           <li className="etapa-actual">
             <strong>1</strong>
@@ -55,7 +55,7 @@ function Etapas(props) { // Funcion que pinta los recuadros de las etapas del re
         </ul>
       )}
 
-      {props.etapaActual === 4 && (
+      {props.etapaActual === 4 && ( //En etapa 4 se puntan 4 recuadros
         <ul>
           <li className="etapa-actual">
             <strong>1</strong>

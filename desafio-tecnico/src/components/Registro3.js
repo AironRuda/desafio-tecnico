@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import Etapas from "./Etapas";
 
-function Registro3() {
+function Registro3() { // Pantalla que confirma que la informacion suministrada fue correcta
   const navegate = useNavigate();
 
   return (

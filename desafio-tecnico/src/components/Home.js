@@ -6,9 +6,10 @@ function Home() { // Componente al que se ingresa una vez el usuario se registr√
 
   return (
     <div>
-      <h1>Home</h1>
+      {/* Indicador de entrada a pantalla de home */}
+      <h1>Home</h1> 
       <button
-        className="btn"
+        className="btn" // Navegacion de boton a inicio
         onClick={() => {
           navegate("/");
         }}

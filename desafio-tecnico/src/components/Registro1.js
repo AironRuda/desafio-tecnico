@@ -3,11 +3,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Etapas from "./Etapas";
 
 function Registro1() {
+  // Pantalla en la que se espera que el usuario ingrese un numero de telefono para autenticar el perfil
   const navegate = useNavigate();
 
   return (
     <div className="informacion">
-      <Etapas etapaActual={1}/>
+      <Etapas etapaActual={1} />
 
       <img
         className="imagen-usuario" // Estilos de la imagen

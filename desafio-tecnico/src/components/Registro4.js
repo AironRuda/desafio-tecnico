@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Etapas from "./Etapas";
 
-function Registro4() {
+function Registro4() { // Etapa en la que se esperaria que se confirmara el codigo de autenticacion
 
   const navegate = useNavigate()
 

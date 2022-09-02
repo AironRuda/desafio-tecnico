@@ -10,7 +10,7 @@ import PerfilCreado from "./components/PerfilCreado";
 import Home from "./components/Home";
 import Registro4 from "./components/Registro4";
 
-function Router() {
+function Router() { // Navegacion de la aplicacion
   return (
     <div className="container">
       <BrowserRouter>

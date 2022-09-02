@@ -9,8 +9,9 @@ import GoogleLogin from "react-google-login";
 import { gapi } from "gapi-script";
 
 function Registro2() {
+  // Pantalla en la que se espera a que usuario ingrese informacion necesaria para el registro
   useEffect(() => {
-    function start() {
+    function start() { // Funcion que permite el correcto desempeño del registro por google
       gapi.client.init({
         clientId:
           "915354670638-ffae1a93lasgjdji297r8cohqda8aou4.apps.googleusercontent.com",
@@ -27,16 +28,16 @@ function Registro2() {
   const [contra, setContra] = useState("");
   const [contra2, setContra2] = useState("");
 
-  const onSubmit = (e) => {
+  const onSubmit = (e) => { // Evento que capta el estimulo en el boton de registro
     e.preventDefault();
-    if (contra === contra2) {
-      UserPool.signUp(usuario, contra, [], null, (err, data) => {
+    if (contra === contra2) { // Se comparan las 2 contrasenas suministradas
+      UserPool.signUp(usuario, contra, [], null, (err, data) => { // Se registra el usuario en user pool
         if (err) {
           console.log(err);
           alert("Se presentó un error en el registro");
         } else {
           console.log(data);
-          navegate("/Registro4");
+          navegate("/Registro4"); 
         }
       });
     } else {
@@ -44,12 +45,10 @@ function Registro2() {
     }
   };
 
-  const responseFacebook = (response) => {
+  const responseFacebook = (response) => { // Funcion que recibe la informacion del registro de facebook y la almacena en user pool
     console.log(response);
-    console.log(response.name.replace(/ /g, "").toLowerCase());
-    let user = response.name.replace(/ /g, "").toLowerCase();
 
-    UserPool.signUp(user, response.email, [], null, (err, data) => {
+    UserPool.signUp(response.email, response.email, [], null, (err, data) => {
       if (err) {
         console.log(err);
         alert("Se presentó un error en el registro");
@@ -60,20 +59,24 @@ function Registro2() {
     });
   };
 
-  const onSuccess = (response) => {
-    console.log("SUCCESS", response.profileObj.name.replace(/ /g, "").toLowerCase());
-    let user = response.profileObj.name.replace(/ /g, "").toLowerCase()
-    console.log(response.profileObj.email)
+  const onSuccess = (response) => { // Funcion que recibe la informacion del registro de google y la almacena en user pool
+    console.log("SUCCESS", response);
 
-    UserPool.signUp(user, response.profileObj.email, [], null, (err, data) => {
-      if (err) {
-        console.log(err);
-        alert("Se presentó un error en el registro");
-      } else {
-        console.log(data);
-        navegate("/home");
+    UserPool.signUp(
+      response.profileObj.email,
+      response.profileObj.email,
+      [],
+      null,
+      (err, data) => {
+        if (err) {
+          console.log(err);
+          alert("Se presentó un error en el registro");
+        } else {
+          console.log(data);
+          navegate("/home");
+        }
       }
-    });
+    );
   };
   const onFailure = (response) => {
     console.log("FAILED", response);

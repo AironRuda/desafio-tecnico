@@ -9,32 +9,34 @@ function IniciarSesion() {
   const [usuario, setUsuario] = useState(""); // Sensa cambios en componente y los almacena mediante hooks
   const [contra, setContra] = useState(""); // Sensa cambios en componente y los almacena mediante hooks
 
-  const onSubmit = (e) => { // Una vez presionado el boton del formulario
+  const onSubmit = (e) => {
+    // Una vez presionado el boton del formulario
     e.preventDefault();
 
-    const user = new CognitoUser({ // Se busca el usuario dentro del pool de usuarios
+    const user = new CognitoUser({
+      // Se busca el usuario dentro del pool de usuarios
       Username: usuario,
-      Pool: UserPool
-    })
+      Pool: UserPool,
+    });
 
-    const authDetails = new AuthenticationDetails({ // Se identifica el usuario
+    const authDetails = new AuthenticationDetails({
+      // Se identifica el usuario
       Username: usuario,
       Password: contra,
+    });
 
-    })
-
-    user.authenticateUser(authDetails,{
+    user.authenticateUser(authDetails, {
+      // Logea el usuario
       onSuccess: (data) => {
-        console.log("onSuccess: ", data)
-        navegate("/perfil_creado")
+        // Login exitoso
+        console.log("onSuccess: ", data);
+        navegate("/perfil_creado");
       },
       onFailure: (err) => {
-        console.log("onFailure: ", err)
+        // Login no exitoso
+        console.log("onFailure: ", err);
       },
-      newPasswordRequired: (data) => {
-        console.log("newPasswordRequired: ", data)
-      }
-    })
+    });
   };
 
   return (
@@ -44,7 +46,10 @@ function IniciarSesion() {
         src="https://assets.stickpng.com/images/585e4beacb11b227491c3399.png"
         alt="imagen de usuario"
       />
-
+      {/**
+       * Formulario que espera la informacion para el login
+       * Cambia el valor de usuario y contraseña al presionar el boton
+       */}
       <form className="formulario" onSubmit={onSubmit}>
         <input
           className="entrada"
@@ -66,10 +71,7 @@ function IniciarSesion() {
           <NavLink to={"/registro1"}>Registrate</NavLink>
         </p>
 
-        <button
-          className="btn btn-morado"
-          type="submit"
-        >
+        <button className="btn btn-morado" type="submit">
           Iniciar sesion
         </button>
       </form>
